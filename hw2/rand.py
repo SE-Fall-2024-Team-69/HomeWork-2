@@ -1,8 +1,18 @@
-import subprocess
+''' This is a docstring '''
+
+#import random
+import secrets
 
 def random_array(arr):
-    shuffled_num = None
-    for i in range(len(arr)):
-        shuffled_num = subprocess.run(["shuf", "-i1-20", "-n1"], capture_output=True)
-        arr[i] = int(shuffled_num.stdout)
+
+    ''' Generates cryptographically strong random integers '''
+
+    # shuffled_num = None
+
+    # for enum_array in enumnerate(arr):
+    #     arr[i] = random.randint(1,20)
+    # return arr
+
+    for enum_array in enumerate(arr):
+        arr[enum_array[0]] = secrets.randbelow(20) + 1
     return arr

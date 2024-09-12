@@ -1,0 +1,15 @@
+--- original/rand.py
++++ fixed/rand.py
+@@ -1,10 +1,10 @@
+ ''' This is a docstring '''
+ 
+-#import random
++# import random
+ import secrets
+ 
++
+ def random_array(arr):
+-
+     ''' Generates cryptographically strong random integers '''
+ 
+     # shuffled_num = None

@@ -1,36 +1,53 @@
+''' Following module has two functions-
+1. mergrSort(arr): Takes an array as an input performs merge sort.
+2. recombine(left_array, right_array): Merges both arrays in a sorted manner'''
+
+
 import rand
 
-def mergeSort(arr):
-    if (len(arr) == 1):
-        return arr
 
-    half = len(arr)//2
+def merge_sort(arr_func):
+    '''Performs recursive merge sort to the input array'''
+    if len(arr_func) == 1:
+        return arr_func
 
-    return recombine(mergeSort(arr[:half]), mergeSort(arr[half:]))
+    half = len(arr_func) // 2
 
-def recombine(leftArr, rightArr):
-    leftIndex = 0
-    rightIndex = 0
-    mergeArr = [None] * (len(leftArr) + len(rightArr))
-    while leftIndex < len(leftArr) and rightIndex < len(rightArr):
-        if leftArr[leftIndex] < rightArr[rightIndex]:
-            rightIndex += 1
-            mergeArr[leftIndex + rightIndex] = leftArr[leftIndex]
+    return recombine(merge_sort(arr_func[:half]), merge_sort(arr_func[half:]))
+
+
+def recombine(left_arr, right_arr):
+    ''' The current function merges both arrays in a sorted manner '''
+
+    left_index = 0
+    right_index = 0
+    merge_arr = []
+
+    while left_index < len(left_arr) and right_index < len(right_arr):
+        if left_arr[left_index] < right_arr[right_index]:
+            # rightIndex += 1
+            # mergeArr[leftIndex + rightIndex] = leftArr[leftIndex]
+            merge_arr.append(left_arr[left_index])
+            left_index += 1
+
         else:
-            leftIndex += 1
-            mergeArr[leftIndex + rightIndex] = rightArr[rightIndex]
+            # leftIndex += 1
+            # mergeArr[leftIndex + rightIndex] = rightArr[rightIndex]
+            merge_arr.append(right_arr[right_index])
+            right_index += 1
 
-    for i in range(rightIndex, len(rightArr)):
-        mergeArr[leftIndex + rightIndex] = rightArr[i]
-    
-    for i in range(leftIndex, len(leftArr)):
-        mergeArr[leftIndex + rightIndex] = leftArr[i]
+    for i in range(right_index, len(right_arr)):
+        # mergeArr[leftIndex + rightIndex] = rightArr[i]
+        merge_arr.append(right_arr[i])
 
-    return mergeArr
+    for i in range(left_index, len(left_arr)):
+        # mergeArr[leftIndex + rightIndex] = leftArr[i]
+        merge_arr.append(left_arr[i])
 
-arr = rand.random_array([None] * 20)
-arr_out = mergeSort(arr)
+    return merge_arr
+
+
+array = rand.random_array([None] * 20)
+arr_out = merge_sort(array)
 
 print(arr_out)
-
-
