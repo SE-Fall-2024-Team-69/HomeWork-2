@@ -1,4 +1,4 @@
-name: Python Code Formatting
+name: Autopep8
 
 on: [push, pull_request]
 
