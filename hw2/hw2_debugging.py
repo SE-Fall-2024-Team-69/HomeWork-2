@@ -13,6 +13,9 @@ def merge_sort(arr_func):
 
     half = len(arr_func) // 2
 
+
+
+
     return recombine(merge_sort(arr_func[:half]), merge_sort(arr_func[half:]))
 
 
@@ -23,28 +26,26 @@ def recombine(left_arr, right_arr):
     right_index = 0
     merge_arr = []
 
+
+
     while left_index < len(left_arr) and right_index < len(right_arr):
         if left_arr[left_index] < right_arr[right_index]:
-            # rightIndex += 1
-            # mergeArr[leftIndex + rightIndex] = leftArr[leftIndex]
             merge_arr.append(left_arr[left_index])
             left_index += 1
 
         else:
-            # leftIndex += 1
-            # mergeArr[leftIndex + rightIndex] = rightArr[rightIndex]
             merge_arr.append(right_arr[right_index])
             right_index += 1
 
     for i in range(right_index, len(right_arr)):
-        # mergeArr[leftIndex + rightIndex] = rightArr[i]
         merge_arr.append(right_arr[i])
 
     for i in range(left_index, len(left_arr)):
-        # mergeArr[leftIndex + rightIndex] = leftArr[i]
         merge_arr.append(left_arr[i])
 
     return merge_arr
+
+
 
 
 array = rand.random_array([None] * 20)
